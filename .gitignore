@@ -1,0 +1,76 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+
+venv/
+env/
+.venv/
+bdms_venv/
+
+# Environment Variables
+
+.env
+.env.*
+
+# Python packaging
+
+build/
+dist/
+*.egg-info/
+
+# Logs
+
+*.log
+
+# SQLite (if used accidentally)
+
+*.sqlite3
+
+# IDE / Editor files
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Streamlit
+
+.streamlit/
+
+# Jupyter Notebooks
+
+.ipynb_checkpoints/
+
+# Data files (optional - ignore if sensitive/large)
+
+*.csv
+*.xlsx
+
+# Model files (if any ML models)
+
+*.pkl
+*.joblib
+
+# PostgreSQL dumps/backups
+
+*.sql.bak
+*.dump
+
+# Coverage / testing
+
+.coverage
+htmlcov/
+
+# Misc
+
+*.tmp
+*.bak

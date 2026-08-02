@@ -1,0 +1,9 @@
+fastapi
+pydantic
+sqlalchemy
+matplotlib
+openai
+python-dotenv
+uvicorn
+streamlit
+pandas
