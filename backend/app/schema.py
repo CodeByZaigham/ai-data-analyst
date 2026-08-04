@@ -7,5 +7,5 @@ class user_query(BaseModel):
      )
 
 class llm_response(BaseModel):
-     sqlquery:str
-     data:list
+     Sqlquery:str
+     Data:list
