@@ -2,8 +2,9 @@ fastapi
 pydantic
 sqlalchemy
 matplotlib
-openai
+groq #api key will be needed
 python-dotenv
 uvicorn
 streamlit
 pandas
+requests

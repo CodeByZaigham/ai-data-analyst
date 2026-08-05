@@ -4,6 +4,7 @@ from app.Database import get_db
 from groq import Groq
 from app.config import settings
 from fastapi import Depends
+import re
 
 AI=Groq(api_key=settings.api_key)
 
@@ -61,12 +62,18 @@ def build_prompt(question:str,details):
      return prompt
 
 def clean_sql(response: str) -> str:
-    sql = response.strip()
-    if sql.startswith("```"):
-        sql = sql.split("```")[1]
-    sql = sql.strip('"').strip("'")
-    sql = sql.replace("\\n", "")
-    return sql
+     sql = response.strip()
+     if sql.startswith("```"):
+          sql = sql.split("```")[1]
+          if sql.strip().lower().startswith("sql"):
+               sql = sql.split("\n", 1)[1] if "\n" in sql else ""
+     sql = sql.strip('"').strip("'")
+
+     sql = re.sub(r"--.*", "", sql)
+
+     sql = sql.split(";")[0].strip() + ";"
+
+     return sql.strip()
 
 def generate_sql(question:str,details) -> str:
      response = AI.chat.completions.create(
@@ -77,3 +84,31 @@ def generate_sql(question:str,details) -> str:
      ]
      )
      return clean_sql((response.choices[0].message.content))
+
+def generate_description(question:str,data:list) -> str:
+     prompt=f"""
+     I am giving you a question and the data recieved 
+     against that question,In the form of json type containing
+     key values and pairs. This data is actually extracted 
+     from a PostgreSQL database table.
+
+     Question = {question}
+     Data = {data} 
+
+     suppose this data as in the visual graph representation
+     now you have you write a 5 lines of visual representation
+     for that data but according to the question like 
+     i am as a data analyst presenting that data to manager
+     can create a image in his mind.take care that dont 
+     mention type of graph.
+
+     just give me the 5 lines no text before and after it
+     """
+     response = AI.chat.completions.create(
+     model="llama-3.1-8b-instant",
+     messages=[
+        {"role": "system", "content": "You are a Visual representative expert"},
+        {"role": "user", "content": prompt}
+     ]
+     )
+     return response.choices[0].message.content

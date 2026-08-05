@@ -9,3 +9,4 @@ class user_query(BaseModel):
 class llm_response(BaseModel):
      Sqlquery:str
      Data:list
+     Description:str
