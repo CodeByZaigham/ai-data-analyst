@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="screenshots/SaaS product Poster.png" alt="AI DATA ANALYST" width="100%">
+</p>
 <p align="center"> <h1 align="center">🧠 AI Data Analyst — NL2SQL Intelligence Engine</h1> <p align="center"> Turning natural language into data-driven decisions — instantly </p> </p>
 
 <p align="center"> <img src="https://img.shields.io/badge/FastAPI-Backend-green?style=for-the-badge&logo=fastapi"> <img src="https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql"> <img src="https://img.shields.io/badge/LLM-NL2SQL-orange?style=for-the-badge"> <img src="https://img.shields.io/badge/Streamlit-UI-red?style=for-the-badge&logo=streamlit"> <img src="https://img.shields.io/badge/Architecture-Production--Inspired-black?style=for-the-badge"> </p>
